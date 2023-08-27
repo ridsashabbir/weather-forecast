@@ -65,5 +65,5 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   getCurrentDate();
 
-  curDate.innerHTML = getCurrentDate() + " | " + getCurrentDay();
+  curDate.innerHTML = getCurrentDay() + " | " + getCurrentDate();
 });
