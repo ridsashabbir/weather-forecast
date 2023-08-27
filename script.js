@@ -16,3 +16,27 @@ const getCurrentDay = () => {
   console.log(weekday[currentDay.getDay()]);
 };
 getCurrentDay();
+
+// get current month e.g. Jan
+const getCurrentDate = () => {
+  var monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let now = new Date();
+  let month = monthNames[now.getMonth()];
+  let date = now.getDate();
+
+  console.log(month + "/" + date);
+};
+getCurrentDate();
