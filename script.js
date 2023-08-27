@@ -14,6 +14,8 @@ const getCurrentDay = () => {
   weekday[6] = "Saturday";
   let currentDay = new Date();
   console.log(weekday[currentDay.getDay()]);
+  let day = weekday[currentDay.getDay()];
+  return day;
 };
 getCurrentDay();
 
@@ -37,6 +39,29 @@ const getCurrentDate = () => {
   let month = monthNames[now.getMonth()];
   let date = now.getDate();
 
+  // get current time e.g. 12:00
+  let hours = now.getUTCHours();
+  let mins = now.getUTCMinutes();
+
+  // set am or pm with time
+  let period = "AM";
+  if (hours > 11) {
+    period = "PM";
+
+    // to avoid time in the format of 13:30
+    if (hours > 12) {
+      hours -= 12;
+    }
+  }
+
+  // to add zero before minutes like 03
+  if (mins < 10) {
+    mins = "0" + mins;
+  }
+
   console.log(month + "/" + date);
+  return `${month} ${date} | ${hours}:${mins}${period}`;
 };
 getCurrentDate();
+
+curDate.innerHTML = getCurrentDate() + "|" + getCurrentDay();
