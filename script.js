@@ -81,7 +81,9 @@ const server = http.createServer((req, res) => {
     )
       .on("data", (chunk) => {
         const objData = JSON.parse(chunk);
-        console.log(objData);
+        const arrData = [objData];
+        console.log(arrData);
+        // console.log(objData);
       })
       .on("end", (err) => {
         if (err) return console.log("connection closed due to errors", err);
