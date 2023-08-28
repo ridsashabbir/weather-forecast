@@ -71,6 +71,24 @@ document.addEventListener("DOMContentLoaded", function () {
 // main backend with node js
 const http = require("http");
 const fs = require("fs");
+let requests = require("requests");
 
 const homeFile = fs.readFileSync("home.html", "utf-8");
-const server = http.createServer((req, res) => {});
+const server = http.createServer((req, res) => {
+  if (req.url == "/") {
+    requests(
+      "api.openweathermap.org/data/2.5/weather?q=Lahore&appid=bb97dcf45fb2360d40faab747c1ee7fd"
+    )
+      .on("data", function (chunk) {
+        console.log(chunk);
+      })
+      .on("end", function (err) {
+        if (err) return console.log("connection closed due to errors", err);
+
+        console.log("end");
+      });
+  } else {
+    console.log("File not Found");
+    res.end("File not Found");
+  }
+});
