@@ -73,16 +73,16 @@ const http = require("http");
 const fs = require("fs");
 let requests = require("requests");
 
-const homeFile = fs.readFileSync("home.html", "utf-8");
+const homeFile = fs.readFileSync("./home.html", "utf-8");
 const server = http.createServer((req, res) => {
   if (req.url == "/") {
     requests(
-      "api.openweathermap.org/data/2.5/weather?q=Lahore&appid=bb97dcf45fb2360d40faab747c1ee7fd"
+      "https://api.openweathermap.org/data/2.5/weather?q=Lahore&appid=bb97dcf45fb2360d40faab747c1ee7fd"
     )
-      .on("data", function (chunk) {
+      .on("data", (chunk) => {
         console.log(chunk);
       })
-      .on("end", function (err) {
+      .on("end", (err) => {
         if (err) return console.log("connection closed due to errors", err);
 
         console.log("end");
@@ -92,3 +92,5 @@ const server = http.createServer((req, res) => {
     res.end("File not Found");
   }
 });
+
+server.listen(3000, "127.0.0.1");
