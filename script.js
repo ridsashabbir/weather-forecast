@@ -82,7 +82,8 @@ const server = http.createServer((req, res) => {
       .on("data", (chunk) => {
         const objData = JSON.parse(chunk);
         const arrData = [objData];
-        console.log(arrData);
+        console.log(arrData[0].main.temp);
+        // console.log(arrData);
         // console.log(objData);
       })
       .on("end", (err) => {
