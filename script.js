@@ -77,7 +77,7 @@ const homeFile = fs.readFileSync("./home.html", "utf-8");
 const server = http.createServer((req, res) => {
   if (req.url == "/") {
     requests(
-      "https://api.openweathermap.org/data/2.5/weather?q=Lahore&appid=bb97dcf45fb2360d40faab747c1ee7fd"
+      "https://api.openweathermap.org/data/2.5/weather?q=Lahore&units=metric&appid=bb97dcf45fb2360d40faab747c1ee7fd"
     )
       .on("data", (chunk) => {
         const objData = JSON.parse(chunk);
