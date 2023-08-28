@@ -67,3 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   curDate.innerHTML = getCurrentDay() + " | " + getCurrentDate();
 });
+
+// main backend with node js
+const http = require("http");
+const fs = require("fs");
+
+const homeFile = fs.readFileSync("home.html");
