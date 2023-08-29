@@ -9,6 +9,7 @@
   "author": "Ridsa Shabbir",
   "license": "ISC",
   "dependencies": {
-    "requests": "^0.3.0"
+    "requests": "^0.3.0",
+    "requires": "^1.0.2"
   }
 }
