@@ -75,7 +75,6 @@ const fs = require("fs");
 let requests = require("requests");
 
 const homeFile = fs.readFileSync("./home.html", "utf-8");
-
 const replaceVal = (tempVal, orgVal) => {
   let temperature = tempVal.replace("{%tempval%}", orgVal.main.temp);
   temperature = temperature.replace("{%tempmin%}", orgVal.main.temp_min);
@@ -84,20 +83,19 @@ const replaceVal = (tempVal, orgVal) => {
   temperature = temperature.replace("{%country%}", orgVal.sys.country);
   return temperature;
 };
-
 const server = http.createServer((req, res) => {
   if (req.url == "/") {
     requests(
       "https://api.openweathermap.org/data/2.5/weather?q=Lahore&units=metric&appid=bb97dcf45fb2360d40faab747c1ee7fd"
     )
       .on("data", (chunk) => {
+        console.log(chunk);
         const objdata = JSON.parse(chunk);
         const arrData = [objdata];
         //console.log(arrData[0].main.temp);
         const realTimeData = arrData
           .map((val) => replaceVal(homeFile, val))
           .join("");
-
         res.write(realTimeData);
         // console.log(realTimeData);
       })
@@ -111,5 +109,4 @@ const server = http.createServer((req, res) => {
     res.end("File not Found");
   }
 });
-
 server.listen(3000, "127.0.0.1");
